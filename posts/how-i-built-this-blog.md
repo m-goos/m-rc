@@ -1,3 +1,7 @@
+---
+title: 'How I built this website: The plan'
+date: '2022-12-19'
+---
 # How I built this website: the plan
 
 It's time, I want my own website. To write about the things I am learning and also because I want to have my own project online. As a developer, you would say, that is as easily said as it is done. Now imagine an architect designing their own home. No creative limits, the only constraint being how much time you are willing to spend, really.
