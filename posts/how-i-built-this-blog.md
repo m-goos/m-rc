@@ -2,6 +2,7 @@
 title: 'How I built this website: The plan'
 date: '2022-12-19'
 ---
+
 # How I built this website: the plan
 
 It's time, I want my own website. To write about the things I am learning and also because I want to have my own project online. As a developer, you would say, that is as easily said as it is done. Now imagine an architect designing their own home. No creative limits, the only constraint being how much time you are willing to spend, really.
@@ -17,6 +18,7 @@ When I started building this blog, I had a couple things in mind, my requirement
 5. keeping it simple, because otherwise nothing will get done.
 
 ## Contents
+
 TOC
 
 ---
@@ -142,7 +144,9 @@ That means for the first version of this blog: no search functionality, no fancy
 ## Mockup
 
 ## Code quality checks
+
 To enforce good practices while building this website, I will set up the following quality checks:
+
 - ESLint for code style
 - TypeScript for type checks
 - Prettier for consistent formatting
