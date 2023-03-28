@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write --cache .",
+    "check-types": "tsc --noEmit",
     "commit": "cz",
     "prepare": "husky install"
   },
