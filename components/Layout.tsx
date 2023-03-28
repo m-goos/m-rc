@@ -7,7 +7,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
-      <div className="bg-slate-50 h-screen">
+      <div className="h-screen bg-slate-50">
         <Nav />
         <div className="p-4">
           <main>{children}</main>
