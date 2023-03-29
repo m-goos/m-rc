@@ -11,7 +11,8 @@
     "prettier": "prettier --write --cache .",
     "check-types": "tsc --noEmit",
     "commit": "cz",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "clean": "rm -rf .next/ && rm -rf out/"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.6",
