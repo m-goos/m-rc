@@ -10,6 +10,7 @@ export default function Hello() {
         className="h-20 w-20 rounded-full"
         width={200}
         height={200}
+        priority
       />
       <p className="text-md md:text-lg">
         Personal blog by <span className="font-semibold">Marc Goossens</span>
