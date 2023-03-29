@@ -5,8 +5,8 @@
 npx concurrently \
   --kill-others-on-fail \
   --prefix "[{name}]" \
-  --names "lint,typecheck,build" \
-  --prefix-colors "bgRed.bold.white,bgGreen.bold.white,bgBlue.bold.white,bgMagenta.bold.white" \
-    "npm run lint --silent" \
-    "npm run check-types --silent" \
-    "npm run prettier --silent -- --loglevel silent"
+  --names "lint,typecheck,format" \
+  --prefix-colors "bgRed.bold.white,bgGreen.bold.white,bgBlue.bold.white" \
+  "npm run lint --silent" \
+  "npm run check-types --silent" \
+  "npm run prettier --silent -- --loglevel silent"
