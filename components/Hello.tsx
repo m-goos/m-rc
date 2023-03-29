@@ -8,6 +8,8 @@ export default function Hello() {
         src={profilePic}
         alt="Picture of the author"
         className="h-20 w-20 rounded-full"
+        width={200}
+        height={200}
       />
       <p className="text-md font-medium md:text-lg">Hello, welcome!</p>
     </div>

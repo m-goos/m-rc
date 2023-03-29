@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write --cache .",
@@ -23,6 +24,7 @@
     "next": "^13.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sharp": "^0.32.0",
     "typescript": "^5.0.2"
   },
   "devDependencies": {
