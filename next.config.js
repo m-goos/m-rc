@@ -1,13 +1,12 @@
+const withExportImages = require('next-export-optimize-images');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  images: {
-    /**
-     * required for `npm run export`
-     * images are optimized by `sharp`, if width & height are set
-     * */
-    unoptimized: true,
-  },
 };
 
-module.exports = nextConfig;
+/**
+ * `withExportImages` optimizes images for `next export` and solves:
+ * @see https://github.com/vercel/next.js/discussions/19065
+ */
+module.exports = withExportImages(nextConfig);

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next export",
+    "export": "next export && next-export-optimize-images",
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write --cache .",
@@ -37,6 +37,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "eslint-config-prettier": "^8.8.0",
     "husky": "^8.0.3",
+    "next-export-optimize-images": "^2.0.0",
     "postcss": "^8.4.20",
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "^0.2.5",
