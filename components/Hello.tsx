@@ -3,7 +3,7 @@ import profilePic from '../public/profilePic.jpeg';
 
 export default function Hello() {
   return (
-    <div className="flex flex-col items-center justify-center space-y-4">
+    <div className="flex flex-col items-center justify-center space-y-4 pt-10">
       <Image
         src={profilePic}
         alt="Picture of the author"
@@ -11,7 +11,9 @@ export default function Hello() {
         width={200}
         height={200}
       />
-      <p className="text-md font-medium md:text-lg">Hello, welcome!</p>
+      <p className="text-md md:text-lg">
+        Personal blog by <span className="font-semibold">Marc Goossens</span>
+      </p>
     </div>
   );
 }
