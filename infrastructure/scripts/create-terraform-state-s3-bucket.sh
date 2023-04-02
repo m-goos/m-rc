@@ -5,7 +5,7 @@ echo "ℹ️  AWS Profile set to: ${AWS_PROFILE}"
 echo
 
 S3_BUCKET_NAME=m-rc.nl-terraform-state
-echo "ℹ️  S3_S3_BUCKET_NAME set to ${S3_BUCKET_NAME}"
+echo "ℹ️  S3_BUCKET_NAME set to ${S3_BUCKET_NAME}"
 echo
 
 echo "✨  Creating S3 bucket for remote terraform state"
