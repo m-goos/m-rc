@@ -4,7 +4,8 @@ export AWS_PROFILE=marc-personal
 echo "ℹ️  AWS Profile set to: ${AWS_PROFILE}"
 echo
 
-S3_BUCKET_NAME=marc-test-bucket-mrc
+# S3_BUCKET_NAME=marc-test-bucket-mrc
+S3_BUCKET_NAME=m-rc-test-s3-bucket-name
 echo "ℹ️  S3_BUCKET_NAME set to ${S3_BUCKET_NAME}"
 echo
 
