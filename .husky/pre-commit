@@ -6,7 +6,7 @@ npx concurrently \
   --kill-others-on-fail \
   --prefix "[{name}]" \
   --names "lint,typecheck,format,terraformValidate,terraformFormat" \
-  --prefix-colors "bgRed.bold.white,bgGreen.bold.white,bgBlue.bold.white,bgOrange.bold.white" \
+  --prefix-colors "bgRed.bold.white,bgGreen.bold.white,bgBlue.bold.white,bgMagenta.bold.white,bgCyan.bold.white" \
   "npm run lint --silent" \
   "npm run check-types --silent" \
   "npm run prettier --silent -- --loglevel silent" \
