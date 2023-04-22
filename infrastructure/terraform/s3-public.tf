@@ -1,5 +1,5 @@
 locals {
-  website_bucket_name = "m-rc-test-s3-bucket-name"
+  s3_website_name_public = "m-rc-test-s3-bucket-name"
 }
 
 data "aws_iam_policy_document" "bucket_policy" {
@@ -11,16 +11,15 @@ data "aws_iam_policy_document" "bucket_policy" {
     sid       = "PublicReadGetObject"
     effect    = "Allow"
     actions   = ["s3:GetObject"]
-    resources = ["arn:aws:s3:::${local.website_bucket_name}/*"]
+    resources = ["arn:aws:s3:::${local.s3_website_name_public}/*"]
   }
-
 }
 
 module "s3-bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "3.8.2"
 
-  bucket = local.website_bucket_name
+  bucket = local.s3_website_name_public
 
   tags = {
     project = var.project_name_tag
