@@ -127,7 +127,15 @@ The first steps are:
 
 - swapi.m-rc.nl
 - add infrastructure setup for this
--
+
+
+// Reality
+1. Setting up a simple Next.js project and configuring Tailwind
+2. Setting up static code quality checks: husky
+3. Creating an S3 bucket and getting a working build
+4. Creating S3 bucket and Cloudfront distribtuion with Terraform
+5. Setting up Github CI/CD
+6. Configuring MDX and shiki to create a first post with correct highlighting
 
 ## The look
 
