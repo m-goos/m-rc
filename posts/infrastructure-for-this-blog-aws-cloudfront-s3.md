@@ -15,3 +15,6 @@ Next steps
 - Set up S3 bucket: https://registry.terraform.io/modules/terraform-aws-modules/s3-bucket/aws/latest
 - Set up Cloudfront distribution: https://registry.terraform.io/modules/terraform-aws-modules/cloudfront/aws/latest
 - Set up DNS records for Cloudflare (manually)
+
+## Resources
+https://awstip.com/how-to-setup-static-web-hosting-using-s3-and-cloudfront-through-terraform-392a6e1dd29d
