@@ -5,8 +5,10 @@
 npx concurrently \
   --kill-others-on-fail \
   --prefix "[{name}]" \
-  --names "lint,typecheck,format" \
-  --prefix-colors "bgRed.bold.white,bgGreen.bold.white,bgBlue.bold.white" \
+  --names "lint,typecheck,format,terraformValidate,terraformFormat" \
+  --prefix-colors "bgRed.bold.white,bgGreen.bold.white,bgBlue.bold.white,bgOrange.bold.white" \
   "npm run lint --silent" \
   "npm run check-types --silent" \
-  "npm run prettier --silent -- --loglevel silent"
+  "npm run prettier --silent -- --loglevel silent" \
+  "terraform -chdir=infrastructure/terraform validate" \
+  "terraform -chdir=infrastructure/terraform fmt"
