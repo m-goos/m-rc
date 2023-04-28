@@ -11,7 +11,7 @@ export CLOUDFRONT_ID=EWXWBUO12ME1G
 echo "ℹ️  Cloudfront ID set to: ${CLOUDFRONT_ID}"
 echo
 
-S3_BUCKET_NAME=m-rc-test-private
+S3_BUCKET_NAME=m-rc.nl
 echo "ℹ️  S3_BUCKET_NAME set to ${S3_BUCKET_NAME}"
 echo
 

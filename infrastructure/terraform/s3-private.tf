@@ -1,8 +1,8 @@
 locals {
-  s3_website_name_cloudfront = "m-rc-test-private"
+  s3_website_name_cloudfront = "m-rc.nl"
 }
 
-module "s3_m-rc_test-private" {
+module "s3_m-rc" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "3.8.2"
 
@@ -19,7 +19,7 @@ data "aws_iam_policy_document" "s3_policy" {
   # Origin Access Controls
   statement {
     actions   = ["s3:GetObject"]
-    resources = ["${module.s3_m-rc_test-private.s3_bucket_arn}/*"]
+    resources = ["${module.s3_m-rc.s3_bucket_arn}/*"]
 
     principals {
       type        = "Service"
@@ -35,6 +35,6 @@ data "aws_iam_policy_document" "s3_policy" {
 }
 
 resource "aws_s3_bucket_policy" "bucket_policy" {
-  bucket = module.s3_m-rc_test-private.s3_bucket_id
+  bucket = module.s3_m-rc.s3_bucket_id
   policy = data.aws_iam_policy_document.s3_policy.json
 }
