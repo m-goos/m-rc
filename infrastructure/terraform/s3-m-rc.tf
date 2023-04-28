@@ -4,10 +4,10 @@ locals {
 
 module "s3_m-rc" {
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.8.2"
+  version = "3.10"
 
   bucket = local.s3_website_name_cloudfront
-  # acl    = "private" @see https://github.com/terraform-aws-modules/terraform-aws-s3-bucket/issues/223
+  # acl    = "private" @see https://github.com/terraform-aws-modules/terraform-aws-s3-bucket/issues/223 --> now private by default
 
   tags = {
     project = var.project_name_tag
