@@ -5,10 +5,10 @@ terraform {
       version = "~> 4.65"
     }
 
-    # cloudflare = {
-    #   source  = "cloudflare/cloudflare"
-    #   version = "~> 4.4.0"
-    # }
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 4.4.0"
+    }
   }
   backend "s3" {
     bucket  = "m-rc.nl-terraform-state"
@@ -23,6 +23,6 @@ provider "aws" {
   region = var.aws_region
 }
 
-# provider "cloudflare" {
-#   api_token = var.cloudflare_api_token
-# }
+provider "cloudflare" {
+  api_token = var.cloudflare_api_token
+}

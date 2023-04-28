@@ -11,3 +11,13 @@ variable "project_name_tag" {
   description = "Tag for all resources in this project"
   default     = "m-rc.nl"
 }
+
+variable "cloudflare_api_token" {
+  type      = string
+  sensitive = true
+}
+
+variable "cloudflare_zone_id" {
+  type      = string
+  sensitive = true
+}
