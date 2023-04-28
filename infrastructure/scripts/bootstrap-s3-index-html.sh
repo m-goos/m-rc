@@ -9,7 +9,7 @@ echo "ℹ️  Cloudfront ID set to: ${CLOUDFRONT_ID}"
 echo
 
 # needs index.html in root
-aws s3api put-object --bucket m-rc-test-private --key index.html --body index.html --content-type text/html
+aws s3api put-object --bucket m-rc.nl --key index.html --body index.html --content-type text/html
 
 echo "🧨  creating cloudfront invalidation"
 aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_ID} --paths "/*"
