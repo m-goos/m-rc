@@ -2,8 +2,13 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.61"
+      version = "~> 4.65"
     }
+
+    # cloudflare = {
+    #   source  = "cloudflare/cloudflare"
+    #   version = "~> 4.4.0"
+    # }
   }
   backend "s3" {
     bucket  = "m-rc.nl-terraform-state"
@@ -17,3 +22,7 @@ terraform {
 provider "aws" {
   region = var.aws_region
 }
+
+# provider "cloudflare" {
+#   api_token = var.cloudflare_api_token
+# }
