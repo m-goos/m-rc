@@ -12,12 +12,12 @@ variable "project_name_tag" {
   default     = "m-rc.nl"
 }
 
-variable "cloudflare_api_token" {
-  type      = string
-  sensitive = true
+variable "domain_name" {
+  type        = string
+  description = "Website URL"
+  default     = "m-rc.nl"
 }
-
-variable "cloudflare_zone_id" {
+variable "cloudflare_api_token" {
   type      = string
   sensitive = true
 }
