@@ -24,5 +24,8 @@ provider "aws" {
 }
 
 provider "cloudflare" {
+  # limit api_token scope to just what's necessary
+  # set token expiration date
+  # .gitignore variables.tfvars
   api_token = var.cloudflare_api_token
 }
