@@ -1,9 +1,20 @@
 # certificate created in AWS ACM
 # DNS record set in Cloudflare
 
+# CloudFront supports US East (N. Virginia) Region only.
+provider "aws" {
+  alias  = "us-east-1"
+  region = "us-east-1"
+}
+
 module "acm" {
   source  = "terraform-aws-modules/acm/aws"
   version = "4.3.2"
+
+  # use specifically us-east-1 for cloudfront compatibility
+  providers = {
+    aws = aws.us-east-1
+  }
 
   tags = {
     project = var.project_name_tag
