@@ -25,3 +25,7 @@ output "validation_domains" {
   description = "List of distinct domain validation options. This is useful if subject alternative names contain wildcards."
   value       = module.acm.validation_domains
 }
+output "acm_certificate_arn" {
+  description = "The ARN of the certificate"
+  value       = module.acm.acm_certificate_arn
+}
