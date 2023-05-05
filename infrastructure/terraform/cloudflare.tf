@@ -5,10 +5,9 @@
 
 # next steps, follow this:
 # Providing simple steps in UI: https://advancedweb.hu/how-to-use-a-custom-domain-on-cloudfront-with-cloudflare-managed-dns/
-# 1. add ACM certificate to cloudfront
-# 2. 
 
-# NOTE: TO UPDATE: ACM & Cloudfront will only work from US-EAST-1.
+# Stuck on the following error:
+# https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/records-with-same-name/
 
 resource "cloudflare_record" "validation" {
   count = length(module.acm.distinct_domain_names)
@@ -21,6 +20,14 @@ resource "cloudflare_record" "validation" {
   proxied = false
 
   allow_overwrite = false
+}
+
+resource "cloudflare_record" "m-rc" {
+  zone_id = data.cloudflare_zone.m-rc.id
+  name    = var.domain_name
+  value   = module.cloudfront.cloudfront_distribution_domain_name
+  type    = "CNAME"
+  ttl     = 60
 }
 
 data "cloudflare_zone" "m-rc" {

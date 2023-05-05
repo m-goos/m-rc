@@ -10,6 +10,12 @@ module "cloudfront" {
   is_ipv6_enabled     = true
   default_root_object = "index.html"
 
+  aliases = ["${var.domain_name}"]
+  viewer_certificate = {
+    acm_certificate_arn = module.acm.acm_certificate_arn
+    ssl_support_method  = "sni-only"
+  }
+
   create_origin_access_control = true
   origin_access_control = {
     s3_oac = {
