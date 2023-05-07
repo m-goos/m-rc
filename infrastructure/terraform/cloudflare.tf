@@ -23,6 +23,8 @@ resource "cloudflare_record" "validation" {
   proxied = false
 
   allow_overwrite = false
+
+  comment = "For validation ACM certificate for ${var.domain_name}"
 }
 
 resource "cloudflare_record" "m-rc" {
