@@ -1,5 +1,11 @@
 # Ignore artifacts:
 .next
 public
+out
+node_modules
 
 posts
+
+# assumption: formatting terraform files in
+# .terraform breaks `terraform validate`
+infrastructure
