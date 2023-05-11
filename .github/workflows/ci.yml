@@ -15,7 +15,7 @@ jobs:
       - name: Use Node.js 19
         uses: actions/setup-node@v3
         with:
-          node-version: 19
+          node-version: 18
       - run: npm ci
       - run: npm run prettier:ci
       - run: npm run build # build checks types and runs linter
