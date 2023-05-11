@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  ci-build:
+  ci-build-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,21 +20,18 @@ jobs:
       - run: npm ci
       - run: npm run prettier:ci
       - run: npm run build # build checks types and runs linter
-  deploy-to-s3:
-    runs-on: ubuntu-latest
-    needs: ci-build
+      # @TODO add caching for nextjs build
+      - run: npm run export
 
-    steps:
-      # https://github.com/aws-actions/configure-aws-credentials
+      # sync to S3
       - uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
-          # @TODO eventually switch to OIDC instead of IAM role?
+      - run: aws s3 rm s3://$S3_PRODUCTION_BUCKET --recursive # clean up bucket
       - run:
-          aws sts get-caller-identity # test AWS credentials setup
+          aws s3 sync out/ s3://$S3_PRODUCTION_BUCKET # push new build
 
 
-          # Next run in this step: deploy using S3 CLI
-# Next job: Invalidate Cloudfront
+          # Next job: Invalidate Cloudfront
