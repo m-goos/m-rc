@@ -13,7 +13,7 @@ module "s3_user" {
   name      = "github-runner-s3-deploy"
 
   s3_actions   = ["s3:PutObject", "s3:GetObject", "s3:ListBucket", "s3:DeleteObject"]
-  s3_resources = ["${module.s3_m-rc.s3_bucket_arn}/*"]
+  s3_resources = ["${module.s3_m-rc.s3_bucket_arn}/*", module.s3_m-rc.s3_bucket_arn]
 
   ssm_base_path = var.ssm_base_path
   ssm_enabled   = var.ssm_enabled
