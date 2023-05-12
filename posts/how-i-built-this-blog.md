@@ -203,10 +203,10 @@ Later
 
 ## Design
 
-Background color
-Font
-Syntax highlighting
-Favicon
+- Background color
+- Font
+- Syntax highlighting
+- Favicon
 
 ## Resources
 
