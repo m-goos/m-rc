@@ -13,5 +13,5 @@ do something in AWS
 What do you mean? For github actions? I just created an IAM role using an open source terraform module.
 It’s this commit from yesterday: https://github.com/m-goos/m-rc/commits/main --> https://github.com/m-goos/m-rc/commit/fa4f22c31a375d473437e00e569f975353f3429b
 You can step through my commits from yesterday, the commit messages should describe what happens and why
- follow some docs to setup terraform locally,
-Just install terraform and the awscli with brew and configure your AWS credentials:  https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials_profiles.html (edited) 
+follow some docs to setup terraform locally,
+Just install terraform and the awscli with brew and configure your AWS credentials: https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials_profiles.html (edited)
