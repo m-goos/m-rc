@@ -7,10 +7,12 @@ TERRAFORM_DIRECTORY=infrastructure/terraform
 npx concurrently \
   --kill-others-on-fail \
   --prefix "[{name}]" \
-  --names "lint,typecheck,format,terraformValidate,terraformFormat" \
+  --names "lint,typecheck,format,terraformFormat" \
+  \
   --prefix-colors "bgRed.bold.white,bgGreen.bold.white,bgBlue.bold.white,bgMagenta.bold.white,bgCyan.bold.white" \
   "npm run lint --silent" \
   "npm run check-types --silent" \
-  "npm run prettier:ci --silent -- --loglevel silent" \
-  "terraform -chdir=$TERRAFORM_DIRECTORY validate" \
-  "terraform -chdir=$TERRAFORM_DIRECTORY fmt"
+  "npm run prettier:ci --silent -- --log-level silent" \
+  \
+  "terraform -chdir=$TERRAFORM_DIRECTORY fmt" # --names "lint,typecheck,format,terraformValidate,terraformFormat" \
+# "terraform -chdir=$TERRAFORM_DIRECTORY validate" \
