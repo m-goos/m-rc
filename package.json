@@ -17,6 +17,10 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
+    "@mdx-js/loader": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
+    "@next/mdx": "^13.5.3",
+    "@types/mdx": "^2.0.8",
     "@types/node": "^20.8.0",
     "@types/react": "^18.2.23",
     "@types/react-dom": "^18.2.8",
