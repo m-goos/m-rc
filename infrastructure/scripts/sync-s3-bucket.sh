@@ -16,7 +16,7 @@ echo "ℹ️  S3_BUCKET_NAME set to ${S3_BUCKET_NAME}"
 echo
 
 echo "⚒  Building and exporting"
-npm run build && npm run export
+npm run build
 echo
 
 echo "🗑  Cleaning up S3 bucket: deleting all files recursively"
