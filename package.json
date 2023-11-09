@@ -12,7 +12,8 @@
     "check-types": "tsc --noEmit",
     "commit": "cz",
     "prepare": "husky install",
-    "clean": "rm -rf .next/ && rm -rf out/"
+    "clean": "rm -rf .next/ && rm -rf out/",
+    "serve-build": "npx http-server out/"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
