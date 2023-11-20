@@ -37,4 +37,5 @@ variable "ssm_enabled" {
 variable "ssm_base_path" {
   type        = string
   description = "Prefix for ssm parameters"
+  default     = "/m-rc"
 }
