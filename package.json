@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "export": "next export && next-export-optimize-images",
+    "build": "next build && next-export-optimize-images",
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write --cache .",
@@ -13,7 +12,8 @@
     "check-types": "tsc --noEmit",
     "commit": "cz",
     "prepare": "husky install",
-    "clean": "rm -rf .next/ && rm -rf out/"
+    "clean": "rm -rf .next/ && rm -rf out/",
+    "serve-build": "npx http-server out/"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
