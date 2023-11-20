@@ -9,6 +9,7 @@ const nextConfig = {
     // required to enable MDX
     mdxRs: true,
   },
+  output: 'export',
 };
 
 /**
