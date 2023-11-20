@@ -40,6 +40,13 @@ module "cloudfront" {
     allowed_methods = ["GET", "HEAD", "OPTIONS"]
     cached_methods  = ["GET", "HEAD"]
     compress        = true
+
+    function_association = {
+      # Valid keys: viewer-request, viewer-response
+      viewer-request = {
+        function_arn = aws_cloudfront_function.rewriteUri.arn
+      }
+    }
   }
 
   custom_error_response = [{
