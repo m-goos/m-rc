@@ -5,10 +5,8 @@ const withMDX = require('@next/mdx')();
 const nextConfig = {
   reactStrictMode: true,
 
-  experimental: {
-    // required to enable MDX
-    mdxRs: true,
-  },
+  // Configure `pageExtensions` to include MDX files
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   output: 'export',
 };
 
