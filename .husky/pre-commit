@@ -3,6 +3,10 @@
 
 TERRAFORM_DIRECTORY=infrastructure/terraform
 
+echo
+echo "💡  if there are any errors, make sure to check SPECIFICALLY which check fails"
+echo
+
 # adopted from kentcdodds.com
 npx concurrently \
   --kill-others-on-fail \
