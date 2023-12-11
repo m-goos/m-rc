@@ -7,7 +7,7 @@ TERRAFORM_DIRECTORY=infrastructure/terraform
 npx concurrently \
   --kill-others-on-fail \
   --prefix "[{name}]" \
-  --names "lint,typecheck,format,terraformValidate,terraformFormat" \
+  --names "lint,check-types,prettier:ci,terraformValidate,terraformFormat" \
   \
   --prefix-colors "bgRed.bold.white,bgGreen.bold.white,bgBlue.bold.white,bgMagenta.bold.white,bgCyan.bold.white" \
   "npm run lint --silent" \
