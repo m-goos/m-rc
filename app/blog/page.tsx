@@ -5,10 +5,6 @@ export default function Page() {
     <>
       Welcome to my blog.
       <HelloWorld />
-      {/* @TODO - next: 
-      - migrate to Next 14
-      - upgrade to app router - the MDX support has changed..
-      */}
     </>
   );
 }
