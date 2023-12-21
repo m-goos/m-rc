@@ -4,7 +4,7 @@
 TERRAFORM_DIRECTORY=infrastructure/terraform
 
 echo
-echo "💡  if there are any errors, make sure to check SPECIFICALLY which check fails"
+echo "💡  if there are any errors, make sure to check SPECIFICALLY which check fails (usually prettier)"
 echo
 
 # adopted from kentcdodds.com
