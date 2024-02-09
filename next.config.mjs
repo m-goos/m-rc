@@ -1,4 +1,5 @@
-const withMDX = require('@next/mdx')();
+// import withMDX from '@next/mdx';
+import createMDX from '@next/mdx';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -18,4 +19,12 @@ const nextConfig = {
   },
 };
 
-module.exports = withMDX(nextConfig);
+const withMDX = createMDX({
+  // Add markdown plugins here, as desired
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+});
+
+export default withMDX(nextConfig);
