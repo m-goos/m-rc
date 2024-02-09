@@ -42,3 +42,9 @@ convert original.jpeg -define jpeg:extent=30kb output.jpg
 convert public-unoptimized/original.jpeg -define jpeg:extent=30kb public/output.jpg
 
 ```
+
+Compress by setting max dimensions
+
+```sh
+convert flower.jpg -resize 200x100 flower_small.jpg
+```
