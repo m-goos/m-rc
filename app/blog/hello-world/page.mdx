@@ -4,20 +4,20 @@ description: A first post created to implement various MDX features for this blo
 previewImage: https://source.unsplash.com/A-NVHPka9Rk/1920x1280
 ---
 
+import Counter from './Counter.tsx';
+
 # Test H1
 
 Hello, Next.js!
 
-## Test H2
-
-You can import and use React components in MDX files.
-
-## Test test - below an HR and a code snippet:
-
----
+## Code snippet (h2)
 
 ```tsx
 export default function Page() {
   return <>Welcome to my blog.</>;
 }
 ```
+
+## First imported component
+
+<Counter />
