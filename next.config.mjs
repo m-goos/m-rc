@@ -1,12 +1,18 @@
-// import withMDX from '@next/mdx';
 import createMDX from '@next/mdx';
 import remarkFrontmatter from 'remark-frontmatter';
+import rehypePrettyCode from 'rehype-pretty-code';
+
+/** @type {import('rehype-pretty-code').Options} */
+const options = {
+  theme: {
+    light: 'github-light',
+    dark: 'github-dark-dimmed',
+  },
+};
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-
-  // Configure `pageExtensions` to include MDX files
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   output: 'export',
   images: {
@@ -24,7 +30,7 @@ const withMDX = createMDX({
   // Add markdown plugins here, as desired
   options: {
     remarkPlugins: [remarkFrontmatter],
-    // rehypePlugins: [],
+    rehypePlugins: [[rehypePrettyCode, options]],
   },
 });
 
