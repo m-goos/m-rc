@@ -1,5 +1,6 @@
 // import withMDX from '@next/mdx';
 import createMDX from '@next/mdx';
+import remarkFrontmatter from 'remark-frontmatter';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -22,8 +23,8 @@ const nextConfig = {
 const withMDX = createMDX({
   // Add markdown plugins here, as desired
   options: {
-    remarkPlugins: [],
-    rehypePlugins: [],
+    remarkPlugins: [remarkFrontmatter],
+    // rehypePlugins: [],
   },
 });
 
