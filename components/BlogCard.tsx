@@ -1,18 +1,23 @@
+import { FrontMatter } from 'lib/readPosts';
 import Link from 'next/link';
 
 type BlogCardProps = {
-  title: string;
+  frontMatter: FrontMatter;
   slug: string;
 };
 
-export default function BlogCard({ title, slug }: BlogCardProps) {
+export default function BlogCard({ frontMatter, slug }: BlogCardProps) {
   return (
     <Link
       href={`blog/${slug}`}
-      className="rounded-md px-2 py-2 target:bg-red-100 hover:bg-slate-300 focus:outline-none focus:ring focus:ring-slate-300 active:bg-slate-400"
-      title={title}
+      className="rounded-md bg-slate-100 p-3 mb-4 focus:outline-none focus:ring ring-offset-2 focus:ring-slate-300 hover:bg-slate-200 active:bg-slate-400"
+      title={frontMatter.title}
     >
-      {title}
+      <h2 className="text-xl font-semibold">{frontMatter.title}</h2>
+      <p className="text-sm font-extralight font-serif pb-1">
+        {frontMatter.date.toDateString()}
+      </p>
+      <p>{frontMatter.description}</p>
     </Link>
   );
 }

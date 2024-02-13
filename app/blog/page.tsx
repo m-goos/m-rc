@@ -6,14 +6,14 @@ export default function Page() {
 
   return (
     <>
-      This is an overview of all blogs:
-      <ul>
-        {blogs.map((blog) => (
-          <li key={blog.slug}>
-            <BlogCard title={blog.frontMatter.title} slug={blog.slug} />
-          </li>
-        ))}
-      </ul>
+      <h1 className="text-3xl font-bold pb-4">Latest blogs</h1>
+      {blogs.map((blog) => (
+        <BlogCard
+          frontMatter={blog.frontMatter}
+          slug={blog.slug}
+          key={blog.slug}
+        />
+      ))}
     </>
   );
 }
