@@ -16,8 +16,8 @@ export default function RootLayout({
         {/* root layout */}
         <div className="h-screen bg-slate-50">
           <Nav />
-          <div className="p-4">
-            <main>{children}</main>
+          <div className="flex justify-center p-4">
+            <main className="flex flex-col grow max-w-3xl">{children}</main>
           </div>
         </div>
       </body>
