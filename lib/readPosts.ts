@@ -16,7 +16,7 @@ const readPosts = () => {
   const blogDir = 'app/blog/(posts)';
   const folderNames = fs
     .readdirSync(blogDir)
-    .filter((fileName) => fileName !== 'page.tsx'); // remove 'page.tsx in root
+    .filter((fileName) => fileName !== 'layout.tsx'); // remove 'layout.tsx in (posts) root
 
   // extract frontmatter
   const blogPreviews = folderNames.map((folderName) => {
