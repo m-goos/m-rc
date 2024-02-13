@@ -13,7 +13,7 @@ type Blog = {
 };
 
 const readPosts = () => {
-  const blogDir = 'app/blog';
+  const blogDir = 'app/blog/(posts)';
   const folderNames = fs
     .readdirSync(blogDir)
     .filter((fileName) => fileName !== 'page.tsx'); // remove 'page.tsx in root
