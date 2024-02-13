@@ -13,11 +13,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* root layout */}
-        <div className="h-screen bg-slate-50">
-          <Nav />
-          <div className="p-4">
-            <main>{children}</main>
+        <div className="flex justify-center min-h-screen bg-slate-50">
+          <div className="flex flex-col grow max-w-2xl px-4">
+            <Nav />
+            <main className="flex flex-col py-8">{children}</main>
           </div>
         </div>
       </body>
