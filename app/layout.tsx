@@ -16,7 +16,7 @@ export default function RootLayout({
         {/* root layout */}
         <div className="min-h-screen bg-slate-50">
           <Nav />
-          <div className="flex justify-center py-8">
+          <div className="flex justify-center py-8 px-4">
             <main className="flex flex-col grow max-w-3xl">{children}</main>
           </div>
         </div>
