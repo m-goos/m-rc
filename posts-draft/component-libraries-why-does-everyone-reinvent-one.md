@@ -1,8 +1,8 @@
 I built a component library at:
 
-- Elsevier
-- TS1
-- TS2
+- ELS
+- SRM
+- OA
 
 Only one _started_ with a decent design systems and this was the biggest difference in the world.
 
