@@ -1,0 +1,68 @@
+---
+title: Infrastructure as Code for startups
+date: 2021-10-05
+description: An approach to building infrastructure, from prototype to MVP
+---
+
+# Infrastructure as Code for startups: Iterating quickly with infrastructure setup
+
+Building the infrastructure for your website or application can take a lot of time. Depending on the scale and size of the project, you might be looking at a full-time DevOps engineering position, or multiple DevOps teams. And we all know, setting things up properly from the start generally pays off in the long run. We also all know how easy it is to over-engineer everything we build. So.. what if you are in the prototyping or MVP phase of your product development cycle, and it either doesn’t make sense to use that amount of resources, or you simply don’t have access to that kind of resources?
+
+![takeoff](/blog/infrastructure-as-code-for-startups-iterate-quickly/takeoff.jpg)
+_Into the clouds - [Philip Veater](https://unsplash.com/photos/3XXvfbShAVk) on Unsplash_
+
+## Infrastructure as Code is closer than you think
+
+Getting one or two people from your development team involved for a short while might suffice for this phase. However, they would have to leverage a clever combination of tried and tested tools. Let us say you would give them a couple weeks, and some stepping stones. What would they need to know, or what would I want to know if I was in their shoes?
+
+In this blog, I will suggest two different approaches and finally a hybrid approach. Hopefully, I can provide the ideas to set up a solid cloud infrastructure in minimal time. As an example, I will set up a static site in the AWS cloud. Later on, this site can incrementally be turned into a [JAMstack](https://jamstack.org/) website, but we won’t look at that in this blog. These ideas apply for different cloud providers, and for different web projects. Following the suggested approach yields a massive return on investment of time, already after a week or two.
+
+## 1. The unmaintainable approach: Setting up using a web interface
+
+When you are setting up your first project in the cloud, you would log in with your user profile on the platform, and start clicking around. Probably you would follow some kind of tutorial that has a couple of screenshots [like this](https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html) - or a video tutorial. You will click on a bunch of different buttons to set up your resources, navigate back and forth between different screens on the web interface, and finish by getting everything to work.
+
+Now I call this the ‘legacy’ approach, because this is how many projects start. Projects that start like this will be much harder to maintain as they grow. Imagine having to add two extra environments (such as development or staging), for a setup that needs 10 minutes of browsing and clicking around. And then realizing you need to change one parameter in all of your environments… Clearly, this is not how you are looking to spend your time. So what is a more elegant approach?
+
+## 2. The Cloud approach: Code to provision your infrastructure
+
+This time, you write a script, explicitly stating your infrastructure configuration. Simply execute the script with an infrastructure as code (or IaC) tool, applying the changes you stated to your cloud environment, and recording them to your so-called state. Think of it like a script for a movie, where your IaC tool is the actor that executes the script, and the recorded movie is the result. The difference with a movie is that you can go back to editing without a problem though ;)
+
+If we would use [Terraform](https://www.terraform.io/) as a tool, the AWS S3 tutorial referenced above, could be written in code like [this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#static-website-hosting) :
+
+```
+resource "aws_s3_bucket" "b" {
+  bucket = "s3-website-test.hashicorp.com"
+  acl    = "public-read"
+  policy = file("policy.json")
+
+  website {
+    index_document = "index.html"
+    error_document = "error.html"
+  }
+}
+```
+
+Or it could be as elaborate as [this](https://github.com/terraform-aws-modules/terraform-aws-s3-bucket/blob/master/examples/complete/main.tf) 200+ lines example of setting up cloud storage that is automatically replicated across different regions for high-availability, encrypted, using different storage tiers depending on data usage, and so on…
+
+Do you see how you can just change a variable or two, to replicate your efforts? The first time I did this it felt like magic - something that would otherwise take quite a while, was now just playing out in my terminal in a couple seconds or minutes. I can now fully set up multiple static websites in a fraction of the time!
+
+As a side note: for provisioning this kind of infrastructure, you will need to be acquainted with the different concepts and services that are needed to run a website. Switching to IaC does not take that away. In my experience it even adds an extra bit of abstraction as you cannot ‘see’ the resources you provision in a UI. This brings up the final approach.
+
+## 3. Transition approach: prototype in the web UI, convert to Code
+
+My current process is as follows: I prototype things I have never done or seen before in the console (the web interface). I try to find blogs where the different resources are visualised as diagrams, showing their relationships. Once I get that working, I set up a proof of concept with IaC.
+
+This is a more ‘visual’ approach for when you are unfamiliar with what you’re building. Another way would be to create a drawing of your different components, in a tool like excalidraw.com or lucid.app. Going over someone else with your diagram will then probably help you figure out what you have missed.
+
+![crash](/blog/infrastructure-as-code-for-startups-iterate-quickly/crash.jpg)
+\*Without Infrastructure as Code, a couple years down the line. [Rita Morais](https://unsplash.com/photos/yPuYoHQJ94U)
+
+## Massive return on invested time
+
+When starting out with IaC, the learning curve is very steep. Believe me when I say I really struggled at the start, because of the much higher level of abstraction. But what you get in return is a lot of time and efficiency. Your infrastructure becomes much more explicit, and it will be easier to spot errors and improvements in your code as time goes on. Besides, for a large part, the code is the documentation of your infrastructure! And once you start doing repetitive tasks, such as setting up different environments and different lambda functions, you will see a massive return on your invested time.
+
+Finally, IaC provides a certain level of redundancy and confidence. You will now be able to work on your infrastructure with multiple people at the same time, like you would work on a shared code project. When a team member makes a change to the infrastructure code, they can check their change against the actual deployment, by running `plan` (in Terraform) to see what their changes will result in. The displayed changes might not be the expected result and this is an indicator that someone has made changes in the meantime. Changes can be looked up in the version history of the code and the responsible colleague can be easily asked for help.
+
+## Final thoughts
+
+Transitioning towards Infrastructure-as-Code is hard at first, but very rewarding. Even with a small team, this can be done and sometimes a hybrid approach is good for prototyping your infrastructure. You could even think of separating these approaches into different AWS accounts. Knowing how your systems were designed and implemented will be very useful when the time comes to scale up. I hope this approach has shed some light on these concepts and that it will help you make the transition… ☁️
