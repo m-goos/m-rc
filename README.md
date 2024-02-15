@@ -28,3 +28,13 @@ $ ./infrastructure/scripts/sync-s3-bucket.sh
 ```
 
 The script makes a couple assumptions, such as a pre-configured AWS account and an S3 bucket name.
+
+## Public to-do list
+
+- [ ] Check links on all blogs
+- [ ] Improve blog preview list with reading time
+- [ ] Improve blogs with date, author, tags
+- [ ] set up 'Playground', all projects are now deployed and code is public
+- [ ] Write a post
+- [ ] draft-status for blogs and a button to show/hide them
+- [ ] dark mode
