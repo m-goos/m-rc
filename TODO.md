@@ -7,6 +7,7 @@ This is the place to collect all TODOs. As a reminder to myself: Before I pick s
 
 ## TODO
 
+- [ ] fix css bug - when navigating: home-blog-playground, the contents jumps a bit left
 - [ ] github actions with deploy
 - [ ] simple e2e test to verify website was deployed correctly
 - [ ] monitoring / notification (telegram?)
@@ -21,3 +22,4 @@ This is the place to collect all TODOs. As a reminder to myself: Before I pick s
 - [ ] set up 'Playground' and explain idea - add some cards with image / demo
 - [ ] draft-status for blogs and a button to show/hide them
 - [ ] optimize images
+- [ ] mailing list: signup + alerting
