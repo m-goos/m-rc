@@ -12,7 +12,8 @@ export default function Hello() {
         priority
       />
       <p className="text-md md:text-lg">
-        Personal blog by <span className="font-semibold">Marc Goossens</span>
+        Software engineering blog by{' '}
+        <span className="font-semibold">Marc Goossens</span>
       </p>
     </div>
   );
