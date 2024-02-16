@@ -23,3 +23,4 @@ This is the place to collect all TODOs. As a reminder to myself: Before I pick s
 - [ ] draft-status for blogs and a button to show/hide them
 - [ ] optimize images
 - [ ] mailing list: signup + alerting
+- [ ] storybook or something similar (simpler) for the components I build
