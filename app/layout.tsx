@@ -2,6 +2,7 @@ import Nav from '@/components/Nav';
 
 // These styles apply to every route in the application
 import './globals.css';
+import Info from '@/components/Info';
 
 export default function RootLayout({
   // Layouts must accept a children prop.
@@ -17,6 +18,12 @@ export default function RootLayout({
           {/* element below is too wide */}
           <div className="flex flex-col grow max-w-2xl px-4">
             <Nav />
+            <Info
+              message={
+                'Work in progress - currently fixing a CSS-bug related to flex alignment'
+              }
+              prLink={'https://github.com/m-goos/m-rc/pull/7'}
+            />
             <main className="flex flex-col py-8">{children}</main>
           </div>
         </div>
