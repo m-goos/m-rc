@@ -2,11 +2,8 @@ import Nav from '@/components/Nav';
 
 // These styles apply to every route in the application
 import './globals.css';
-import Info from '@/components/Info';
 
 export default function RootLayout({
-  // Layouts must accept a children prop.
-  // This will be populated with nested layouts or pages
   children,
 }: {
   children: React.ReactNode;
@@ -14,17 +11,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="flex flex-col justify-center min-h-screen bg-slate-50">
-          {/* element below is too wide */}
-          <div className="flex flex-col grow max-w-2xl px-4">
-            <Nav />
-            <Info
-              message={
-                'Work in progress - currently fixing a CSS-bug related to flex alignment'
-              }
-              prLink={'https://github.com/m-goos/m-rc/pull/7'}
-            />
-            <main className="flex flex-col py-8">{children}</main>
+        <div className="flex flex-col items-center min-h-screen bg-slate-50">
+          {/* this container sets a flexible max width that's always maxed out */}
+          <div className="flex grow max-w-xl w-full">
+            {/* provide padding and keep blogs constrained to 100% width */}
+            <div className="flex flex-col w-full px-4">
+              <Nav />
+              <main className="flex flex-col py-8">{children}</main>
+            </div>
           </div>
         </div>
       </body>
