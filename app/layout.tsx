@@ -13,7 +13,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="flex justify-center min-h-screen bg-slate-50">
+        <div className="flex flex-col justify-center min-h-screen bg-slate-50">
+          {/* element below is too wide */}
           <div className="flex flex-col grow max-w-2xl px-4">
             <Nav />
             <main className="flex flex-col py-8">{children}</main>
