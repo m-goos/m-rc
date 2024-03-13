@@ -1,18 +1,22 @@
 ---
-title: Automated code quality checks for React projects
-date: 2023-03-28
-description: Set up git hooks with husky to simplify local code quality checks such as prettier, eslint and conventional commit.
+title: Don't commit code without static quality checks
+date: 2024-03-03
+description: Set up git hooks with husky to simplify static code quality checks such as prettier, eslint and conventional commit.
 ---
 
-# Automated code quality checks for React projects
+# Don't commit code without static quality checks
 
-Every time I set up a new web project, some basic automated quality checks need to be configured. Whether these quality checks just run locally, for CI/CD or both.
+For every new web project, you'll configure at least some automated code quality checks. This post is about the most basic checks: Static. Because they are so basic, running them locally can be very quick and can prevent any messy code from ending up in `git`.
+
+I like to check code before it gets added to git. Static quality checks are usually very basic,
+
+This way, the feedback is much quicker than when the quality checks on the Continuous Integration server fail.
+
+by using `githooks`
+
+setting up these checks with githooks,
+
+Whether these quality checks just run locally, for CI/CD or both.
 
 - formatting: prettier
   - prettier tailwind plugin
-- code style: eslint
-- git history quality: conventional commit
-- husky for git hooks
-  - commit message hook: conventional commit
-  - format on every `git add`
-  - check for types on commit
