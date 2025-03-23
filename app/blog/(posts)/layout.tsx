@@ -4,7 +4,8 @@ export default function PostLayout({
   children: React.ReactNode;
 }) {
   return (
-    <article className="prose prose-sm md:prose-base lg:prose-lg prose-slate md:pt-4">
+    // responsive prose styling up to 'md'; after that, heading get really large (too large)
+    <article className="prose prose-sm md:prose-base prose-slate md:pt-4">
       {children}
     </article>
   );
