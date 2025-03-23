@@ -76,13 +76,20 @@ $ pwd
 
 ## Deploying
 
+- Set up and configure the `aws cli` - AWS CLI [docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
+
+Scope permissions to:
+
+- just the required S3 bucket for the website and
+- invalidation of the cloudfront distribution relevant for m-rc.nl
+
 To deploy directly to S3, run from the project root folder:
 
 ```sh
 $ ./infrastructure/scripts/sync-s3-bucket.sh
 ```
 
-The script makes a couple assumptions, such as a pre-configured AWS account and an S3 bucket name.
+The script makes a couple assumptions, such as a pre-configured AWS account and an S3 bucket name. It's a bit crude in the sense that it simply deletes the contents of the S3 bucket and pushes the build, but it's fast and functional. (it would be more elegant to only upload what's changed)
 
 ## Next steps
 
