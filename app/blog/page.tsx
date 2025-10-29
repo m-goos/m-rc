@@ -6,7 +6,7 @@ export default function Page() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold pb-4">Latest blogs</h1>
+      <h1 className="text-2xl font-bold pb-4">Latest blogs</h1>
       {blogs.map((blog) => (
         <BlogCard
           frontMatter={blog.frontMatter}
