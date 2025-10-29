@@ -32,6 +32,14 @@ const projects: Project[] = [
     screenshot: '/playground/star-wars-optimized.jpg',
     repository: 'https://github.com/m-goos/swapi-playground',
   },
+  {
+    title: 'This blog: NextJS Markdown blog',
+    description:
+      'Personal website where I experiment with some writing. Pretty meta to have a screenshot here.',
+    link: 'https://m-rc.nl',
+    screenshot: '/playground/blog-optimized.jpg',
+    repository: 'https://github.com/m-goos/m-rc',
+  },
 ];
 
 /**
@@ -51,15 +59,12 @@ export default function Page() {
       <p>
         An overview of some tiny, simple things I built - a dated and incomplete
         view of what I can do, just putting it out there 🍔. All of this is
-        written some years ago (2020~2022), before AI assisted coding..
-      </p>
-
-      <p>
-        All of these are static builds, uploaded in an S3 bucket with Cloudfront
+        written some years ago (2020~2022), before AI assisted coding.. The
+        projects are all static builds, uploaded in an S3 bucket with Cloudfront
         as a CDN. A very simple <em>stack</em>.
       </p>
 
-      <section className="flex mt-4 gap-4">
+      <section className="flex flex-wrap mt-6 gap-4">
         {projects.map((p) => (
           <PlaygroundCard key={p.title} project={p} />
         ))}
