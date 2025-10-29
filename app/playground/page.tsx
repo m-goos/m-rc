@@ -49,7 +49,9 @@ const projects: Project[] = [
  * - open the command palette in DevTools: `cmd + shift + P`
  * - type "Capture screenshot", saved to Downloads
  *
- * Then, optimize image.
+ * Optimizing image:
+ * - see README for optimizing images
+ * - `magick blog.png -resize 960 blog-optimized.jpg`
  */
 
 export default function Page() {
