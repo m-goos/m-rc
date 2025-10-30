@@ -2,6 +2,13 @@ import Nav from '@/components/Nav';
 
 // These styles apply to every route in the application
 import './globals.css';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  icons: {
+    icon: '/favicon.svg',
+  },
+};
 
 export default function RootLayout({
   children,
