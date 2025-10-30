@@ -16,8 +16,25 @@ npx concurrently \
   --prefix-colors "bgRed.bold.white,bgGreen.bold.white,bgBlue.bold.white,bgMagenta.bold.white,bgCyan.bold.white" \
   "npm run lint --silent" \
   "npm run check-types --silent" \
-  "npm run prettier:ci --silent -- --log-level silent" \
-  # "terraform -chdir=$TERRAFORM_DIRECTORY validate" \
-  # "terraform -chdir=$TERRAFORM_DIRECTORY fmt"
+  "npm run prettier:ci --silent -- --log-level silent"
+
+
+# Terraform checks (only if infrastructure changed)
+# note: grep returns exit code 1 if no match, so "|| true" to address that
+INFRA_CHANGED=$(git diff --cached --name-only | grep "^infrastructure/" || true)
+
+if [ -n "$INFRA_CHANGED" ]; then
+  echo
+  echo "🏗️  Infrastructure changes detected, running Terraform checks..."
+  echo
+  
+  npx concurrently \
+    --kill-others-on-fail \
+    --prefix "[{name}]" \
+    --names "terraformValidate,terraformFormat" \
+    --prefix-colors "bgMagenta.bold.white,bgCyan.bold.white" \
+    "terraform -chdir=$TERRAFORM_DIRECTORY validate" \
+    "terraform -chdir=$TERRAFORM_DIRECTORY fmt -check"
+fi
 
 echo
