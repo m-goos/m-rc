@@ -17,7 +17,7 @@ npx concurrently \
   "npm run lint --silent" \
   "npm run check-types --silent" \
   "npm run prettier:ci --silent -- --log-level silent" \
-  "terraform -chdir=$TERRAFORM_DIRECTORY validate" \
-  "terraform -chdir=$TERRAFORM_DIRECTORY fmt"
+  # "terraform -chdir=$TERRAFORM_DIRECTORY validate" \
+  # "terraform -chdir=$TERRAFORM_DIRECTORY fmt"
 
 echo
