@@ -11,27 +11,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Run CI and build in Node 18
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v5
+      - name: Run CI and build in Node 24
+        uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: 24
           cache: 'npm' # @TODO look into this - https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
       - run: npm ci
       - run: npm run prettier:ci
       - run: npm run build # build checks types and runs linter
-      # @TODO add caching for nextjs build
-      - run: npm run export
 
-      # sync to S3
-      - uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-central-1
-      - run: aws s3 rm s3://${{ vars.S3_PRODUCTION_BUCKET}} --recursive # clean up bucket
-      - run: aws s3 sync out/ s3://${{ vars.S3_PRODUCTION_BUCKET}} # push new build
 
+      # # sync to S3
+      # - uses: aws-actions/configure-aws-credentials@v2
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: eu-central-1
+      # - run: aws s3 rm s3://${{ vars.S3_PRODUCTION_BUCKET}} --recursive # clean up bucket
+      # - run: aws s3 sync out/ s3://${{ vars.S3_PRODUCTION_BUCKET}} # push new build
 
       # - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_ID }} --paths "/*"
       # Needs updated AWS IAM role to access cloudflare
