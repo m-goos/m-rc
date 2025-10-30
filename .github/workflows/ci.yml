@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  # AWS steps
+  S3_BUCKET_NAME: m-rc.nl
+  CLOUDFRONT_ID: EWXWBUO12ME1G
+  AWS_REGION: eu-west-1
+
 jobs:
   ci-build-deploy:
     runs-on: ubuntu-latest
@@ -37,6 +43,37 @@ jobs:
       - run: npm run build # build checks types and runs linter
         env:
           NEXT_TELEMETRY_DISABLED: 1
+
+      # Deploy steps - only run on push to main (not PRs)
+      - name: Configure AWS credentials
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Clean S3 bucket
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: aws s3 rm s3://${{ env.S3_BUCKET_NAME }} --recursive
+
+      - name: Sync to S3
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: aws s3 sync out/ s3://${{ env.S3_BUCKET_NAME }}
+
+      - name: Invalidate CloudFront
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          INVALIDATION_ID=$(aws cloudfront create-invalidation \
+            --distribution-id ${{ env.CLOUDFRONT_ID }} \
+            --paths "/*" \
+            --query 'Invalidation.Id' \
+            --output text)
+
+          echo "Waiting for invalidation ${INVALIDATION_ID} to complete..."
+          aws cloudfront wait invalidation-completed \
+            --distribution-id ${{ env.CLOUDFRONT_ID }} \
+            --id ${INVALIDATION_ID}
 
       # # sync to S3
       # - uses: aws-actions/configure-aws-credentials@v2
