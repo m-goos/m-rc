@@ -1,1 +1,1 @@
-cloudflare_api_token = "" # token from cloudflare account - make sure to set expiration date and scope for your API token
+cloudflare_api_token = "" # token from cloudflare account - make sure to set expiration date and scope for your API token. Needs the following permissions for this repo: "Zone -> DNS -> Edit"

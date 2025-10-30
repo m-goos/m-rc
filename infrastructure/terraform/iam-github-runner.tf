@@ -18,3 +18,24 @@ module "s3_user" {
   ssm_base_path = var.ssm_base_path
   ssm_enabled   = var.ssm_enabled
 }
+
+data "aws_caller_identity" "current" {}
+
+resource "aws_iam_user_policy" "cloudfront_invalidation" {
+  name = "cloudfront-invalidation"
+  user = module.s3_user.user_name
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "cloudfront:CreateInvalidation",
+          "cloudfront:GetInvalidation"
+        ]
+        Resource = "arn:aws:cloudfront::${data.aws_caller_identity.current.account_id}:distribution/${module.cloudfront.cloudfront_distribution_id}"
+      }
+    ]
+  })
+}
