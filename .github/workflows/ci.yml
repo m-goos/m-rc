@@ -22,7 +22,8 @@ jobs:
       - run: npm ci
       - run: npm run prettier:ci
       - run: npm run build # build checks types and runs linter
-
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
 
       # # sync to S3
       # - uses: aws-actions/configure-aws-credentials@v2
