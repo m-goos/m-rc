@@ -12,11 +12,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+
       - name: Run CI and build in Node 24
         uses: actions/setup-node@v6
         with:
           node-version: 24
-          cache: 'npm' # @TODO look into this - https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
+          cache: 'npm'
+
       - run: npm ci
       - run: npm run prettier:ci
       - run: npm run build # build checks types and runs linter
