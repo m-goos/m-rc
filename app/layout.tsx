@@ -3,6 +3,7 @@ import Nav from '@/components/Nav';
 // These styles apply to every route in the application
 import './globals.css';
 import { Metadata } from 'next';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   icons: {
@@ -24,7 +25,8 @@ export default function RootLayout({
             {/* provide padding and keep blogs constrained to 100% width */}
             <div className="flex flex-col w-full px-4">
               <Nav />
-              <main className="flex flex-col py-8">{children}</main>
+              <main className="flex flex-col flex-1 py-8">{children}</main>
+              <Footer />
             </div>
           </div>
         </div>
