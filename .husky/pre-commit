@@ -8,15 +8,15 @@ echo "💡  if there are any errors, make sure to check SPECIFICALLY which check
 echo
 
 # adopted from kentcdodds.com
-npx concurrently \
+pnpm exec concurrently \
   --kill-others-on-fail \
   --prefix "[{name}]" \
   --names "lint,check-types,prettier:ci,terraformValidate,terraformFormat" \
   \
   --prefix-colors "bgRed.bold.white,bgGreen.bold.white,bgBlue.bold.white,bgMagenta.bold.white,bgCyan.bold.white" \
-  "npm run lint --silent" \
-  "npm run check-types --silent" \
-  "npm run prettier:ci --silent -- --log-level silent"
+  "pnpm run --silent lint" \
+  "pnpm run --silent check-types" \
+  "pnpm run --silent prettier:ci --log-level silent"
 
 
 # Terraform checks (only if infrastructure changed)
@@ -28,7 +28,7 @@ if [ -n "$INFRA_CHANGED" ]; then
   echo "🏗️  Infrastructure changes detected, running Terraform checks..."
   echo
   
-  npx concurrently \
+  pnpm exec concurrently \
     --kill-others-on-fail \
     --prefix "[{name}]" \
     --names "terraformValidate,terraformFormat" \
