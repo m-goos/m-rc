@@ -46,8 +46,18 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: 1
 
-      # smoke tests run against the built export, so they gate the deploy below
+      # smoke tests run against the built export, so they gate the deploy below.
+      # The browser is a ~90MB download and the tests themselves take ~3s, so
+      # caching the binary is what keeps this step cheap.
+      - name: Cache Playwright browser
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
+
       - name: Install Playwright browser
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: pnpm exec playwright install --with-deps chromium
 
       - name: Run smoke tests
