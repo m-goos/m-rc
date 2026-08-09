@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 type NavItemProps = {
   href: string;
-  text: string;
+  text: React.ReactNode;
   title?: string;
 };
 

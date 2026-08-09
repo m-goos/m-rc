@@ -3,6 +3,9 @@ import Image from 'next/image';
 export default function Hello() {
   return (
     <div className="flex flex-col grow items-center justify-center space-y-4 pt-10">
+      <p className="text-md md:text-lg">
+        Hi, I&apos;m <span className="font-semibold">Marc Goossens</span>
+      </p>
       <Image
         src={'/profilePic-640-q80-30kb.jpeg'}
         alt="Picture of the author"
@@ -11,10 +14,6 @@ export default function Hello() {
         height={82.4}
         priority
       />
-      <p className="text-md md:text-lg">
-        Software engineering blog by{' '}
-        <span className="font-semibold">Marc Goossens</span>
-      </p>
     </div>
   );
 }
