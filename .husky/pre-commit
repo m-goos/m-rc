@@ -1,6 +1,3 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 TERRAFORM_DIRECTORY=infrastructure/terraform
 
 echo
