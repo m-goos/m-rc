@@ -44,9 +44,11 @@ export default function RootLayout({
             <div className="flex flex-col w-full px-4">
               <Nav />
               <main className="flex flex-col flex-1 py-8">{children}</main>
-              <Footer />
             </div>
           </div>
+          {/* outside the max-width container so the bar spans the viewport;
+              the footer constrains its own content to match the page */}
+          <Footer />
         </div>
       </body>
     </html>

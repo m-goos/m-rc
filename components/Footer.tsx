@@ -3,8 +3,10 @@ import LinkedInIcon from './LinkedInIcon';
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col items-center text-sm text-slate-600 py-4 bg-gradient-to-br from-slate-100 via-blue-100 to-teal-100 dark:text-slate-300 dark:from-slate-800 dark:via-blue-950 dark:to-teal-950">
-      <div className="flex flex-row items-center gap-3">
+    <footer className="w-full text-sm text-slate-600 bg-gradient-to-br from-slate-100 via-blue-100 to-teal-100 dark:text-slate-300 dark:from-slate-800 dark:via-blue-950 dark:to-teal-950">
+      {/* mirrors the page container, so the links line up with the content
+          above while the bar itself runs edge to edge */}
+      <div className="flex flex-row items-center justify-center gap-3 max-w-2xl mx-auto px-4 py-4">
         <a
           className="flex flex-row items-center gap-1.5 rounded-md px-2 py-1 hover:bg-slate-200 focus:outline-none focus:ring focus:ring-slate-300 dark:hover:bg-slate-700 dark:focus:ring-slate-600"
           href="https://github.com/m-goos"
