@@ -1,0 +1,5 @@
+# pnpm blocks dependency build scripts by default; sharp needs its
+# postinstall to fetch the platform-specific binary.
+# Since pnpm 11 these settings live here rather than in package.json.
+allowBuilds:
+  sharp: true
