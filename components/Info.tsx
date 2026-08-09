@@ -7,7 +7,7 @@ type InfoProps = {
 
 export default function Info({ message, prLink }: InfoProps) {
   return (
-    <div className="flex flex-col rounded-md bg-blue-100 font-medium text-sm text-slate-600 p-3 my-2">
+    <div className="flex flex-col rounded-md bg-blue-100 font-medium text-sm text-slate-600 p-3 my-2 dark:bg-blue-950 dark:text-slate-300">
       <div className="flex">
         <span className="inline-flex justify-center items-center h-5 w-5 rounded-full bg-blue-500 text-blue-100 p-2 mr-3 text-center text-xs">
           i
@@ -17,7 +17,10 @@ export default function Info({ message, prLink }: InfoProps) {
           {prLink && (
             <span className="text-slate-400">
               Open PR:{' '}
-              <a className="text-blue-500 hover:text-blue-800" href={prLink}>
+              <a
+                className="text-blue-500 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                href={prLink}
+              >
                 {prLink}
               </a>
             </span>
