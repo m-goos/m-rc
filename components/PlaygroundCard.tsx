@@ -6,12 +6,16 @@ export default function PlaygroundCard({ project }: { project: Project }) {
     // a grey shadow disappears against a dark page, so dark mode gets a black
     // one to keep the same sense of lift
     <article className="flex flex-col flex-1 min-w-[300px] bg-slate-100 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-200 dark:bg-slate-800 dark:border-slate-700 dark:shadow-black/50 dark:hover:shadow-black/70">
+      {/* `fill` pins the image to this box and object-cover crops the
+          overflow. With width/height instead, the browser sized the image from
+          its own 960x667 (1.44:1) ratio while the box is 16/10 (1.6:1), so it
+          rendered ~11% taller than its container and spilled over the title. */}
       <div className="relative bg-gray-100 aspect-[16/10] dark:bg-slate-700">
         <Image
           src={project.screenshot}
           alt={`Screenshot of ${project.title}`}
-          width={960}
-          height={667}
+          fill
+          sizes="(max-width: 768px) 100vw, 336px"
           className="object-cover"
         />
       </div>

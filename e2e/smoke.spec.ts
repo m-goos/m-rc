@@ -63,4 +63,35 @@ test.describe('smoke', () => {
     ).toBeVisible();
     await expect(cards.first().getByRole('img')).toBeVisible();
   });
+
+  /**
+   * Regression: the screenshots are 960x667 (1.44:1) but their frame asks for
+   * 16/10 (1.6:1). Sized from its own ratio, the image was ~11% taller than
+   * the frame — WebKit let it overflow onto the title (reported on iOS), while
+   * Chromium instead stretched the frame to fit.
+   *
+   * Asserting the frame keeps its declared ratio catches the shared cause in
+   * either engine; asserting the overlap alone would only fail on WebKit.
+   */
+  test('playground screenshots keep their frame at 16:10', async ({ page }) => {
+    // narrow enough to stack the cards, which is where this was first seen
+    await page.setViewportSize({ width: 375, height: 800 });
+    await page.goto('/playground');
+
+    const card = page.locator('article').first();
+    const frame = card.locator('div.relative').first();
+    const image = card.getByRole('img').first();
+    const title = card.getByRole('heading').first();
+
+    const frameBox = (await frame.boundingBox())!;
+    const imageBox = (await image.boundingBox())!;
+    const titleBox = (await title.boundingBox())!;
+
+    expect(frameBox.width / frameBox.height).toBeCloseTo(16 / 10, 2);
+    // the image is contained by the frame rather than driving its height
+    expect(imageBox.y + imageBox.height).toBeLessThanOrEqual(
+      frameBox.y + frameBox.height + 1
+    );
+    expect(imageBox.y + imageBox.height).toBeLessThanOrEqual(titleBox.y);
+  });
 });
