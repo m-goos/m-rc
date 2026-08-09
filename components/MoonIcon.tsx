@@ -2,7 +2,7 @@ type IconProps = {
   className?: string;
 };
 
-export default function MoonIcon({ className = 'h-3.5 w-3.5' }: IconProps) {
+export default function MoonIcon({ className = 'h-5 w-5' }: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
