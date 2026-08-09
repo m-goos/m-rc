@@ -3,7 +3,9 @@ import { Project } from 'app/playground/page';
 
 export default function PlaygroundCard({ project }: { project: Project }) {
   return (
-    <article className="flex flex-col flex-1 min-w-[300px] bg-slate-100 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-200 dark:bg-slate-800 dark:border-slate-700">
+    // a grey shadow disappears against a dark page, so dark mode gets a black
+    // one to keep the same sense of lift
+    <article className="flex flex-col flex-1 min-w-[300px] bg-slate-100 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-200 dark:bg-slate-800 dark:border-slate-700 dark:shadow-black/50 dark:hover:shadow-black/70">
       <div className="relative bg-gray-100 aspect-[16/10] dark:bg-slate-700">
         <Image
           src={project.screenshot}
