@@ -60,7 +60,7 @@ Note: a commit will fail when the pre-commit hooks fail, so generally it makes s
 2. Run the pre-commit hooks `./.husky/pre-commit`
 3. Commit: `pnpm commit`
 
-Given there is no CI set up in github (yet), this has been a straightforward and fast way to enforce some level of commit quality locally.
+These hooks catch problems before a commit exists, which is faster than waiting on CI. GitHub Actions runs the same checks (plus the build and smoke tests) on every pull request, so the hooks are a first line of defence rather than the only one.
 
 ### Terraform
 
@@ -75,6 +75,10 @@ $ pwd
 ```
 
 ## Deploying
+
+Merging to `main` deploys. GitHub Actions builds the site, runs the smoke tests, and only then syncs `out/` to S3 and invalidates the CloudFront distribution — see `.github/workflows/ci.yml`. Failing tests block the deploy.
+
+The manual route below is the fallback, for when you want to push a build without going through `main`.
 
 - Set up and configure the `aws cli` - AWS CLI [docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
 

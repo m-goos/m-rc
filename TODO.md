@@ -7,8 +7,8 @@ This is the place to collect all TODOs. As a reminder to myself: Before I pick s
 
 ## TODO
 
-- [ ] simple e2e test to verify website was deployed correctly
-- [ ] dark mode for the website
+- [ ] smoke test the deployed site (the current Playwright tests run in CI
+      against the build, before the deploy — nothing checks production after)
 - [ ] BLOGS:
   - [ ] Improve blog preview list with reading time
   - [ ] Improve blogs with date, author, tags
