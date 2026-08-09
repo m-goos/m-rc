@@ -2,7 +2,7 @@ type IconProps = {
   className?: string;
 };
 
-export default function GitHubIcon({ className = 'h-4 w-4' }: IconProps) {
+export default function GitHubIcon({ className = 'h-3.5 w-3.5' }: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

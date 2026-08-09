@@ -8,7 +8,7 @@ export default function Logo() {
       title="Go to the homepage"
       text={
         <span className="flex flex-row items-center gap-1.5">
-          <HomeIcon className="h-4 w-4" />
+          <HomeIcon className="h-3.5 w-3.5" />
           m-rc
         </span>
       }
