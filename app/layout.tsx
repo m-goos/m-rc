@@ -36,7 +36,9 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body>
+      {/* the page background is repeated on <body> so iOS overscroll past the
+          footer reveals the same colour instead of white */}
+      <body className="bg-slate-50 dark:bg-slate-900">
         <div className="flex flex-col items-center min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
           {/* this container sets a flexible max width that's always maxed out */}
           <div className="flex grow max-w-2xl w-full">
