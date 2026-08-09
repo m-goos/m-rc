@@ -8,7 +8,6 @@ export default function Nav() {
       <div className="flex flex-row">
         <NavItem text="Blog" href="/blog" />
         <NavItem text="Playground" href="/playground" />
-        <NavItem text="About" href="/about" />
       </div>
     </nav>
   );
