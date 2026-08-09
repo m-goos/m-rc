@@ -29,20 +29,16 @@ jobs:
           cache: 'pnpm'
 
       - run: pnpm install --frozen-lockfile
+
+      # Next 16 removed `next lint`, so `next build` no longer lints. These run
+      # explicitly rather than relying on the build to catch them.
       - run: pnpm run prettier:ci
+      - run: pnpm run lint
+      - run: pnpm run check-types
 
-      # cache for nextjs - code snippet from nextjs docs
-      - uses: actions/cache@v4
-        with:
-          path: |
-            ${{ github.workspace }}/.next/cache
-          # Generate a new cache whenever packages or source files change.
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-          # If source files changed but packages didn't, rebuild from a prior cache.
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
-
-      - run: pnpm run build # build checks types and runs linter
+      # No .next/cache step: Turbopack builds this site in seconds, and
+      # restoring plus re-saving that cache cost more than the build it saved.
+      - run: pnpm run build
         env:
           NEXT_TELEMETRY_DISABLED: 1
 
