@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 import MoonIcon from './MoonIcon';
 import SunIcon from './SunIcon';
 
@@ -12,22 +12,34 @@ import SunIcon from './SunIcon';
  * before first paint) and the first click pins a choice in localStorage.
  *
  * The theme lives in a `dark` class on <html>, which is what Tailwind's
- * `darkMode: 'class'` reads.
+ * `darkMode: 'class'` reads. That class is the source of truth, so this
+ * subscribes to it rather than keeping a second copy in React state.
  */
-export default function ThemeToggle() {
-  // null until mounted: the server-rendered HTML cannot know the OS
-  // preference, so rendering an icon straight away would mismatch on hydration
-  const [isDark, setIsDark] = useState<boolean | null>(null);
+function subscribe(onStoreChange: () => void) {
+  const observer = new MutationObserver(onStoreChange);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'],
+  });
+  return () => observer.disconnect();
+}
 
-  useEffect(() => {
-    setIsDark(document.documentElement.classList.contains('dark'));
-  }, []);
+const getSnapshot = () => document.documentElement.classList.contains('dark');
+
+// the server render cannot know the OS preference; null means "not yet known"
+const getServerSnapshot = () => null;
+
+export default function ThemeToggle() {
+  const isDark = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot
+  );
 
   function toggle() {
     const next = !document.documentElement.classList.contains('dark');
     document.documentElement.classList.toggle('dark', next);
     localStorage.setItem('theme', next ? 'dark' : 'light');
-    setIsDark(next);
   }
 
   return (
