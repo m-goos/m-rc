@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * Always reserve room for the scrollbar. Without this, navigating from a short
+ * page (home) to a tall one (a blog post) adds a scrollbar, narrows the
+ * viewport and shifts the centred column sideways.
+ */
+html {
+  scrollbar-gutter: stable;
+}
+
 /* rehype-pretty-code theme config */
 code[data-theme*=' '],
 code[data-theme*=' '] span {
