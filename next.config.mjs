@@ -1,7 +1,4 @@
 import createMDX from '@next/mdx';
-import remarkFrontmatter from 'remark-frontmatter';
-import rehypePrettyCode from 'rehype-pretty-code';
-import remarkGfm from 'remark-gfm';
 
 /** @type {import('rehype-pretty-code').Options} */
 const options = {
@@ -28,10 +25,11 @@ const nextConfig = {
 };
 
 const withMDX = createMDX({
-  // Add markdown plugins here, as desired
+  // Plugins are named as strings rather than imported: Next 16 builds with
+  // Turbopack, which cannot pass JavaScript functions through to Rust.
   options: {
-    remarkPlugins: [remarkGfm, remarkFrontmatter],
-    rehypePlugins: [[rehypePrettyCode, options]],
+    remarkPlugins: ['remark-gfm', 'remark-frontmatter'],
+    rehypePlugins: [['rehype-pretty-code', options]],
   },
 });
 
