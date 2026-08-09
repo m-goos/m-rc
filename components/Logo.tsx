@@ -6,6 +6,7 @@ export default function Logo() {
     <NavItem
       href="/"
       title="Go to the homepage"
+      showActive={false}
       text={
         <span className="flex flex-row items-center gap-1.5">
           <HomeIcon className="h-3.5 w-3.5" />

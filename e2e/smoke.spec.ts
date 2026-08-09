@@ -94,4 +94,29 @@ test.describe('smoke', () => {
     );
     expect(imageBox.y + imageBox.height).toBeLessThanOrEqual(titleBox.y);
   });
+
+  test('the active page is underlined in the nav', async ({ page }) => {
+    // scoped to the <nav>, since post titles contain the word "blog" too
+    const navLink = (name: string) =>
+      page.getByRole('navigation').getByRole('link', { name, exact: true });
+
+    await page.goto('/blog');
+    await expect(navLink('Blog')).toHaveAttribute('aria-current', 'page');
+    await expect(navLink('Playground')).not.toHaveAttribute(
+      'aria-current',
+      'page'
+    );
+
+    // a post keeps its section highlighted
+    await page.goto('/blog/java-learning-strategy');
+    await expect(navLink('Blog')).toHaveAttribute('aria-current', 'page');
+
+    await page.goto('/playground');
+    await expect(navLink('Playground')).toHaveAttribute('aria-current', 'page');
+    await expect(navLink('Blog')).not.toHaveAttribute('aria-current', 'page');
+
+    // the logo links home but is branding, so it never carries the underline
+    await page.goto('/');
+    await expect(navLink('m-rc')).not.toHaveAttribute('aria-current', 'page');
+  });
 });
